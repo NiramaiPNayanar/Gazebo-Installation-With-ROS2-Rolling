@@ -39,10 +39,154 @@ Ensure that your selected versions match the compatibility tables in the above d
 - **Installation Environment:** Native dual-boot (not a virtual machine)
 
 ---
+# ROS2 Rolling Installation Guide (Ubuntu 24.04)
 
-## Steps for Installing ROS2 Rolling
+This document provides the complete setup steps for installing **ROS2 Rolling** on Ubuntu 24.04 (Noble).  
+Reference: https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debs.html
 
-(Instructions will be added here.)
+---
+
+## 1. Set Locale
+
+Ensure your system is using a UTF-8–supported locale.
+
+Check current locale:
+```
+locale  # check for UTF-8
+```
+Install and configure UTF-8 locale:
+
+```
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+```
+Verify the updated locale:
+
+```
+locale  # verify settings
+```
+
+
+---
+
+## 2. Enable Required Repositories
+
+ROS2 packages are distributed through custom APT repositories.
+
+Enable the **Ubuntu Universe** repository:
+
+```
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+```
+
+Add the **ROS2 apt source**:
+```
+sudo apt update && sudo apt install curl -y
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
+sudo dpkg -i /tmp/ros2-apt-source.deb
+```
+
+This configures ROS repositories and keeps them updated automatically.
+
+---
+
+## 3. Install Development Tools (Optional)
+
+If you plan to build packages or perform development work:
+```
+sudo apt update && sudo apt install ros-dev-tools
+```
+
+---
+
+## 4. Install ROS2 Rolling
+
+Update your package index:
+```
+sudo apt update
+```
+
+Upgrade your system to avoid dependency issues:
+```
+sudo apt upgrade
+```
+
+### Desktop Install (Recommended)
+
+Includes RViz, tutorials, demos, and core ROS features:
+
+```
+sudo apt install ros-rolling-desktop #recommended for all around useage
+```
+
+### ROS-Base Install (Minimal)
+
+Communication libraries and CLI tools. No GUI:
+
+```
+sudo apt install ros-rolling-ros-base
+```
+
+---
+
+## 5. Setup Environment
+
+Navigate to ROS installation:
+```
+cd /opt/ros
+```
+You can see the ros that you have on your device
+
+
+Return to home:
+```
+cd #to go back 
+```
+
+Add ROS2 Rolling to your `.bashrc`:
+
+```
+gedit ~/.bashrc
+```
+
+Append the following line at the bottom:
+
+```
+source /opt/ros/rolling/setup.bash
+```
+
+
+Save and close.
+
+### Multiple ROS Versions Note
+
+If you have multiple ROS distributions installed:
+
+- Comment out the source line for versions you do not want to use  
+- Uncomment the one you want active  
+
+Only one ROS environment should be sourced at a time.
+
+---
+
+## ROS2 is now installed
+
+Open a new terminal or run:
+
+```
+source ~/.bashrc
+```
+
+You can verify your installation:
+
+```
+ros2 --version
+```
+
 
 
 ---
