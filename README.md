@@ -193,7 +193,22 @@ ros2 --version
 
 ## Steps for Installing Gazebo Jetty
 
-(Instructions will be added here.)
+Jetty binaries are provided for Ubuntu Noble (24.04). The Jetty binaries are hosted in the packages.osrfoundation.org repository. To install all of them, the metapackage gz-jetty can be installed.
+
+First install some necessary tools:
+```
+sudo apt-get update
+sudo apt-get install curl lsb-release gnupg
+```
+Then install Gazebo Jetty:
+```
+sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-prerelease $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-prerelease.list > /dev/null
+sudo apt-get update
+sudo apt-get install gz-jetty
+```
+All libraries should be ready to use and the gz sim app ready to be executed.
 
 
 ---
