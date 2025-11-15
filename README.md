@@ -19,14 +19,11 @@ Since ROS2 Rolling and Gazebo Jetty are both in active development, compatibilit
 
 ## Reference Documentation
 
-ROS2 Rolling Release Info:  
-https://docs.ros.org/en/rolling/Releases.html
+ROS2 Rolling Release Info: https://docs.ros.org/en/rolling/Releases.html
 
-Gazebo ↔ ROS2 Compatibility Matrix:  
-https://gazebosim.org/docs/latest/ros_installation/
+Gazebo ↔ ROS2 Compatibility Matrix: https://gazebosim.org/docs/latest/ros_installation/
 
-Gazebo ↔ Linux Distribution Compatibility:  
-https://gazebosim.org/docs/latest/getstarted/
+Gazebo ↔ Linux Distribution Compatibility: https://gazebosim.org/docs/latest/getstarted/
 
 Ensure that your selected versions match the compatibility tables in the above documentation.
 
