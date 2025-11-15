@@ -228,8 +228,8 @@ The exact installation commands are intentionally left blank so they can be cust
 
 ## Disclaimer
 
-This guide reflects a personal setup process during a development period.  
-Compatibility, installation commands, and system requirements may change over time.  
-Use this document as a reference only.  
-I am not responsible for system modifications, warranty loss, or compatibility issues arising from following this guide.
+- This guide reflects a personal setup process during a development period.  
+- Compatibility, installation commands, and system requirements may change over time.  
+- Use this document as a reference only.  
+- I am not responsible for system modifications, warranty loss, or compatibility issues arising from following this guide.
 
